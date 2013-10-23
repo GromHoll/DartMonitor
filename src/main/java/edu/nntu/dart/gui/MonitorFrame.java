@@ -13,11 +13,10 @@ public class MonitorFrame extends JFrame implements WaveOutput, ServerListener {
     private Icon green_icon;
 
     private JPanel mainPanel;
-    private JTable infoTable;
     private JLabel imageLabel;
     private JLabel statusLabel;
     private JLabel lastUpdateLabel;
-    private WaveTableModel tableModel;
+    private JPanel visualPanel;
 
     public MonitorFrame(String name) {
         super(name);
@@ -28,13 +27,13 @@ public class MonitorFrame extends JFrame implements WaveOutput, ServerListener {
         red_icon   = loadIcon("/edu/nntu/images/red.png");
         green_icon = loadIcon("/edu/nntu/images/green.png");
 
-        tableModel = new WaveTableModel();
-        infoTable.setModel(tableModel);
-
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setAvailable(false);
+    }
 
+    public void setVisualPanel(JPanel vp) {
+        visualPanel.add(vp);
         this.pack();
     }
 
@@ -64,6 +63,5 @@ public class MonitorFrame extends JFrame implements WaveOutput, ServerListener {
     @Override
     public void output(List<WavePoint> list) {
         lastUpdateLabel.setText(new Date().toString());
-        tableModel.setData(list);
     }
 }

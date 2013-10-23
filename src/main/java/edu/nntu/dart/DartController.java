@@ -7,6 +7,7 @@ import edu.nntu.dart.data.UrlDataLoader;
 import edu.nntu.dart.entity.WavePoint;
 import edu.nntu.dart.gui.MonitorFrame;
 import edu.nntu.dart.gui.ServerListener;
+import edu.nntu.dart.gui.TablePanel;
 import edu.nntu.dart.out.WaveOutput;
 import edu.nntu.dart.out.FileOutput;
 
@@ -38,10 +39,13 @@ public class DartController extends Thread {
         
         FileOutput fo = new FileOutput("out.txt");
         MonitorFrame mf = new MonitorFrame("WavePoint monitor");
+        TablePanel tablePanel = new TablePanel();
+        mf.setVisualPanel(tablePanel.getMainPanel());
         mf.setVisible(true);
 
         serverListeners.add(mf);
         waveOutputs.add(fo);
+        waveOutputs.add(tablePanel);
         waveOutputs.add(mf);
     }
 
