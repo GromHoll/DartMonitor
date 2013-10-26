@@ -19,24 +19,9 @@ public class WaveXYDataSet extends AbstractXYDataset {
 
     public void setData(List<WavePoint> list) {
         if(list != null) {
-            wavePoints = processWave(list);
+            wavePoints = list;
             fireDatasetChanged();
         }
-    }
-
-    private List<WavePoint> processWave(List<WavePoint> list) {
-        List<WavePoint> res = new ArrayList<>();
-
-        res.add(list.get(0));
-        for(int i = 1; i < list.size(); i++) {
-            Date before = list.get(i - 1).getDate();
-            Date current = list.get(i).getDate();
-            if(current.getTime() - before.getTime() >= MIN_INTERVAL) {
-                res.add(list.get(i));
-            }
-        }
-
-        return res;
     }
 
     @Override

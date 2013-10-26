@@ -16,7 +16,8 @@ import java.util.*;
 
 public class DartController extends Thread {
 
-    private static final String DART_URL = "http://www.ndbc.noaa.gov/data/realtime2/21402.dart";
+    //private static final String DART_URL = "http://www.ndbc.noaa.gov/data/realtime2/21402.dart";
+    private static final String DART_URL = "http://www.ndbc.noaa.gov/data/realtime2/21418.dart";
 
     private static final int TIMEOUT = 60000;
 
